@@ -19,6 +19,7 @@ myunion :: Eq a => [a] -> [a] -> [a]
 myunion [] ys = ys
 myunion (x:xs) ys
     | x `elem` ys = myunion xs ys
+    | x `elem` xs = myunion xs ys
     | otherwise = x : myunion xs ys
 
 -- №4 mysubst
@@ -26,6 +27,7 @@ mysubst :: Eq a => [a] -> [a] -> [a]
 mysubst [] _ = []
 mysubst (x:xs) ys
     | x `elem` ys = mysubst xs ys
+    | x `elem` xs = mysubst xs ys
     | otherwise = x : mysubst xs ys
 
 -- №5 nthElements
@@ -58,6 +60,7 @@ main = do
 
     putStrLn "№3 myunion"
     print (myunion [1,2,3] [2,4,5])
+    print (myunion [1,1] [2,4,5])
     print (myunion [3,2,1] [5,4,3])
     print (myunion [1,2,3] [4,5,6])
     print (myunion [6,7] [])
@@ -71,6 +74,7 @@ main = do
     putStrLn "№4 mysubst"
     print (mysubst [1,2,3] [4,5,6])
     print (mysubst [1,2,3] [1,4,5])
+    print (mysubst [1,1,3,3] [1,4,5])
     print (mysubst [7,8] [7,8,9])
     print (mysubst [10] [])
     print (mysubst [] [11])
