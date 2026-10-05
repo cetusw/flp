@@ -3,7 +3,8 @@ module Lab3 where
 -- №1 listnums
 listnums :: Int -> [Int]
 listnums n 
-    | n <= 0 = []
+    | n <= 0 = n : listnums (n + 1)
+    | n == 1 = [n]
     | otherwise = n : listnums (n - 1)
 
 -- №2 secondlastlist
@@ -41,6 +42,7 @@ main = do
     print (listnums 1)
     print (listnums 0)
     print (listnums (-1))
+    print (listnums (-5))
     putStrLn ""
 
     putStrLn "№2 secondlastlist"
